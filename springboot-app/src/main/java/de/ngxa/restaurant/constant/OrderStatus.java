@@ -1,4 +1,4 @@
-package de.ngxa.restaurant.entity;
+package de.ngxa.restaurant.constant;
 
 public enum OrderStatus {
 	

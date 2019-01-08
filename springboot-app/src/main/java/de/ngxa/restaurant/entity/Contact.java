@@ -1,12 +1,15 @@
 package de.ngxa.restaurant.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-//@SequenceGenerator(name = "default_gen", sequenceName = "contact_seq", allocationSize = 1)
 @Data
+@EqualsAndHashCode(callSuper = true)
+@Table(name="NGXA_SHOP_CONTACT")
 public class Contact extends BaseEntity {
 
 	private String telephone;

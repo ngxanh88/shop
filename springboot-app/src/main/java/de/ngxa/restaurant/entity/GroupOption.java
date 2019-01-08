@@ -1,29 +1,31 @@
 package de.ngxa.restaurant.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
-
 @Entity
-@Table(name="ESC_GROUP_OPTION")
-//@SequenceGenerator(name = "default_gen", sequenceName = "group_option_seq", allocationSize = 1)
 @Data
+@EqualsAndHashCode(callSuper = true)
+@Table(name="NGXA_MENU_GROUP_OPTION")
 public class GroupOption extends BaseEntity {
+
+	private String shopName;
 
 	private String name;
 	private boolean isMultiChoice;
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<Option> options;
-	
-	private Long shopId;
+	@JoinColumn(name="group_option_id", referencedColumnName="id")
+	private List<Option> options = new ArrayList<>();
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "menuitem_group_option",
-		joinColumns = { @JoinColumn(name = "GROUP_OPTION_ID") }, 
-		inverseJoinColumns = { @JoinColumn(name = "MENU_ITEM_ID") })
-	private List<MenuItem> menuItems;
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "NGXA_MENU_MENUITEM_GROUP_OPTION",
+		joinColumns = { @JoinColumn(name = "group_option_id") },
+		inverseJoinColumns = { @JoinColumn(name = "menu_item_id") })
+	private List<MenuItem> menuItems = new ArrayList<>();
 
 }

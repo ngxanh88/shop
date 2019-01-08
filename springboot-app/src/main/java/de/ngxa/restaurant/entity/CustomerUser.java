@@ -1,16 +1,16 @@
 package de.ngxa.restaurant.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ESC_USER")
-//@SequenceGenerator(name = "default_gen", sequenceName = "esc_user_seq", allocationSize = 1)
 @Data
-public class User extends BaseEntity {
+@EqualsAndHashCode(callSuper = true)
+@Table(name="NGXA_SHOP_CUSTOMER_USER")
+public class CustomerUser extends BaseEntity {
 
 	private String username;
 	/**sha512 */

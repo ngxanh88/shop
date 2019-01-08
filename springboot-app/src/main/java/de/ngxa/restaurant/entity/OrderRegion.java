@@ -1,12 +1,15 @@
 package de.ngxa.restaurant.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-//@SequenceGenerator(name = "default_gen", sequenceName = "order_region_seq", allocationSize = 1)
 @Data
+@EqualsAndHashCode(callSuper = true)
+@Table(name="NGXA_SHOP_ORDER_REGION")
 public class OrderRegion extends BaseEntity {
 
 	private String country;

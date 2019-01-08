@@ -1,14 +1,15 @@
 package de.ngxa.restaurant.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Table(name="EMAIL_CONFIG")
 @Entity
-//@SequenceGenerator(name = "default_gen", sequenceName = "email_config_seq", allocationSize = 1)
 @Data
+@EqualsAndHashCode(callSuper = true)
+@Table(name="NGXA_SYS_EMAIL_CONFIG")
 public class EmailConfigEntity extends BaseEntity {
 
 	private String username;

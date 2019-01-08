@@ -1,14 +1,17 @@
 package de.ngxa.restaurant.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-//@SequenceGenerator(name = "default_gen", sequenceName = "special_seq", allocationSize = 1)
 @Data
+@EqualsAndHashCode(callSuper = true)
+@Table(name="NGXA_SHOP_SPECIAL")
 public class SpecialEntity extends BaseEntity {
 
 	private String title;

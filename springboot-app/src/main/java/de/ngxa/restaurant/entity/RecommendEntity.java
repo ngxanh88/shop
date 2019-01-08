@@ -1,18 +1,22 @@
 package de.ngxa.restaurant.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-//@SequenceGenerator(name = "default_gen", sequenceName = "recommend_seq", allocationSize = 1)
 @Data
+@EqualsAndHashCode(callSuper = true)
+@Table(name="NGXA_SHOP_RECOMMEND")
 public class RecommendEntity extends BaseEntity {
+
+	private String shopName;
 
 	private String name;
 	private String alias;
-	private Long shopId;
 	private String imgUrl;
 	@Column(columnDefinition = "TEXT")
 	private String description;

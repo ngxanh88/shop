@@ -1,39 +1,37 @@
 package de.ngxa.restaurant.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-//@SequenceGenerator(name = "default_gen", sequenceName = "menu_seq", allocationSize = 1)
 @Data
+@EqualsAndHashCode(callSuper = true)
+@Table(name="NGXA_MENU")
 public class Menu extends BaseEntity {
+
+	private String shopName;
+	private String parentMenu;
 
 	private String name;
 	private String description;
 	private String urlName;
-
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)	
-	@JoinTable(name="MENU_MENU_ITEM",
-			   joinColumns={@JoinColumn(name="MENU_ID")},
-			   inverseJoinColumns={@JoinColumn(name="MENU_ITEM_ID")})
-	private List<MenuItem> items;
-
-	private Long shopId;
-	
-	private String parentMenu;
-	
 	private int index = 1;
+
+	@OneToMany(mappedBy="menu", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<MenuItem> items = new ArrayList<>();
 
 	public Menu(){
 	}
 
-	public Menu(Long id, String name, String description, Long shopId, String parentMenu, String urlName, int index) {
+	public Menu(Long id, String name, String description, String shopName, String parentMenu, String urlName, int index) {
 		setId(id);
 		setName(name);
 		setDescription(description);
-		setShopId(shopId);
+		setShopName(shopName);
 		setParentMenu(parentMenu);
 		setUrlName(urlName);
 		setIndex(index);

@@ -1,12 +1,15 @@
 package de.ngxa.restaurant.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-//@SequenceGenerator(name = "default_gen", sequenceName = "order_option_seq", allocationSize = 1)
 @Data
+@EqualsAndHashCode(callSuper = true)
+@Table(name="NGXA_SHOP_ORDER_LINE_OPTION")
 public class OrderOption extends BaseEntity {
 
 	private String name;

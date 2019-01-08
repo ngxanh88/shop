@@ -1,22 +1,31 @@
 package de.ngxa.restaurant.entity;
 
+import de.ngxa.restaurant.constant.OrderStatus;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="ESC_ORDER")
-//@SequenceGenerator(name = "default_gen", sequenceName = "order_seq", allocationSize = 1)
 @Data
+@EqualsAndHashCode(callSuper = true)
+@Table(name="NGXA_SHOP_ORDER")
 public class Order extends BaseEntity {
 
+	private String shopName;
+
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<OrderLine> lines ;
-	
-	private Long shopId;
+	@JoinColumn(name="order_id", referencedColumnName="id")
+	private List<OrderLine> lines = new ArrayList<>();
+
 	private String orderNumber;
-	private OrderStatus status;
+
+	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition="varchar")
+	private OrderStatus status = OrderStatus.INCOMING;
+
 	//Order Info
 	private boolean isPickup = false;
 	@Column(nullable = false, columnDefinition = "boolean default true")

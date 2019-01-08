@@ -1,17 +1,22 @@
 package de.ngxa.restaurant.entity;
 
+import de.ngxa.restaurant.constant.ShopType;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-//@SequenceGenerator(name = "default_gen", sequenceName = "shop_seq", allocationSize = 1)
 @Data
+@EqualsAndHashCode(callSuper = true)
+@Table(name="NGXA_SHOP")
 public class Shop extends BaseEntity {
 
-	private String ldapUserId;
+	private String owner;
 	private String name;
+
 	private String alias;
 	@Column(columnDefinition = "TEXT")
 	private String longDesc;
@@ -22,24 +27,28 @@ public class Shop extends BaseEntity {
 	private String actualInfo;
 	private Long minOrderValue = 0L;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-	private List<ExtInfo> extInfo;
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinColumn(name="shop_id", referencedColumnName="id")
+	private List<ExtInfo> extInfo = new ArrayList<>();
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private MetaInfo metaInfo;
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private Contact contact;
-	@OneToMany(targetEntity = OrderRegion.class, fetch = FetchType.EAGER)
-	private List<OrderRegion> orderRegions;
 
-	@Column(nullable = false, columnDefinition = "boolean default false")
-	private boolean isOrderAble = false;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name="shop_id", referencedColumnName="id")
+	private List<OrderRegion> orderRegions = new ArrayList<>();
+
+	@Column(nullable = false, columnDefinition = "boolean default true")
+	private boolean isOrderAble = true;
 
 	@Column(nullable = false, columnDefinition = "boolean default true")
 	private boolean needIndex = true;
-	
-	@Column(nullable = false, columnDefinition = "boolean default false")
-	private boolean isPartner =  false;
 
+	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition="varchar")
 	private ShopType shopType = ShopType.RESTAURANT;
 	
 	private String latitude;

@@ -1,23 +1,28 @@
 package de.ngxa.restaurant.entity;
 
+import de.ngxa.restaurant.constant.UserType;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name="ESC_SHOP_USER")
-//@SequenceGenerator(name = "default_gen", sequenceName = "user_seq", allocationSize = 1)
 @Data
-public class ShopUser extends BaseEntity{
+@EqualsAndHashCode(callSuper = true)
+@Table(name="NGXA_SHOP_USER")
+public class ShopUser extends BaseEntity {
+
+	private String shopName;
 
 	private String username;
 	/**sha512 */
 	private String password;
-	private String firstname;
-	private String lastname;
+	private String firstName;
+	private String lastName;
 	private String email;
-	private UserType userType;
-	private Long shopId;	
+
+	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition="varchar")
+	private UserType userType = UserType.ADMIN;
 
 }

@@ -1,12 +1,15 @@
 package de.ngxa.restaurant.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-//@SequenceGenerator(name = "default_gen", sequenceName = "ext_info_seq", allocationSize = 1)
 @Data
+@EqualsAndHashCode(callSuper = true)
+@Table(name="NGXA_SHOP_EXT_INFO")
 public class ExtInfo extends BaseEntity {
 
 	private String extKey;
