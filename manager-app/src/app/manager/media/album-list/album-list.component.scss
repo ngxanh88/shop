@@ -1,0 +1,45 @@
+.albums-holder {
+  padding: 20px;
+}
+
+.album-item {
+  max-width: 170px;
+  position: relative;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.album-item:hover .btns-holder {
+  opacity: 1;
+}
+
+.btns-holder {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+}
+
+.btns-holder > button {
+  margin-left: 5px;
+  background-color: rgba(1,1,1, .8);
+  opacity: 0.5;
+}
+
+.btns-holder > button:hover {
+  opacity: 1;
+}
+
+.album-icon {
+  font-size: 50px;
+  padding-top: 15px;
+}
+
+.card-body {
+  padding: 10px;
+}
