@@ -15,8 +15,8 @@
 
         <div class="col-lg-2 col-md-2 col-sm-4 card album-item" *ngFor="let album of albums; let i = index;">
           <div class="btns-holder">
-            <button class="btn btn-sm tpz-edit-btn text-white" (click)="updateAlbum(album, i)"><i class="fa fa-pencil"></i></button>
-            <button class="btn btn-sm tpz-edit-btn text-white" (click)="deleteAlbum(album, i)"><i class="fa fa-trash"></i></button>
+            <button class="btn btn-sm text-white" (click)="updateAlbum(album, i)"><i class="fa fa-pencil"></i></button>
+            <button class="btn btn-sm text-white" (click)="deleteAlbum(album, i)"><i class="fa fa-trash"></i></button>
           </div>
           <a class="card-img-top text-center album-icon text-primary" [routerLink]="['detail', album.id]" [routerLinkActive]="['router-link-active']">
             <i class="fa fa-folder-open"></i>

@@ -10,9 +10,9 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
       { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
       { path: 'media', loadChildren: './media/media.module#MediaModule' },
-      // { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
-      // { path: 'forms', loadChildren: './form/form.module#FormModule' },
-      // { path: 'bs-element', loadChildren: './bs-element/bs-element.module#BsElementModule' },
+      { path: 'menu', loadChildren: './menu/menu.module#MenuModule' },
+      { path: 'general', loadChildren: './general/general.module#GeneralModule' },
+      { path: 'order', loadChildren: './order/order.module#OrderModule' },
       // { path: 'grid', loadChildren: './grid/grid.module#GridModule' },
       // { path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule' },
       // { path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' }

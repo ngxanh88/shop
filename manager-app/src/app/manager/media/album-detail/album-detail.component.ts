@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {routerTransition} from '../../../router.animations';
+import {ActivatedRoute} from '@angular/router';
+import {FileAssetDto} from '../../../dto/file-asset-dto';
+import {Album} from '../../../dto/album';
 
 @Component({
   selector: 'app-album-detail',
@@ -9,7 +12,12 @@ import {routerTransition} from '../../../router.animations';
 })
 export class AlbumDetailComponent implements OnInit {
 
-  constructor() { }
+  currentAlbum: Album;
+  fileDtos: Array<FileAssetDto>;
+  selectedFileMap: Map<number, FileAssetDto> = new Map();
+  searchText = '';
+
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
   }

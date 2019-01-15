@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {PageHeaderRoutingModel} from './page-header-routing-model';
 
 @Component({
     selector: 'app-page-header',
@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 export class PageHeaderComponent implements OnInit {
     @Input() heading: string;
     @Input() icon: string;
+
+    @Input() backRoutingList: Array<PageHeaderRoutingModel> = [];
     constructor() {}
 
     ngOnInit() {}

@@ -5,7 +5,10 @@
         </h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <i class="fa fa-dashboard"></i> <a href="Javascript:void(0)" [routerLink]="['/dashboard']">Dashboard</a>
+                <i class="fa fa-dashboard"></i> <a href="Javascript:void(0)" [routerLink]="['/dashboard']"> Dashboard</a>
+            </li>
+            <li class="breadcrumb-item" *ngFor="let headerRoutingModel of backRoutingList;">
+              <i class="fa {{headerRoutingModel.icon}}"></i> <a href="Javascript:void(0)" [routerLink]="[headerRoutingModel.routerLink]"> {{headerRoutingModel.routingName}}</a>
             </li>
             <li class="breadcrumb-item active"><i class="fa {{icon}}"></i> {{heading}}</li>
         </ol>

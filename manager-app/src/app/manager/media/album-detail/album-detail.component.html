@@ -1,4 +1,113 @@
 <div [@routerTransition]>
-  <app-page-header [heading]="'Album detail'" [icon]="'fa-file-image-o'"></app-page-header>
+  <app-page-header [heading]="'Album detail'" [icon]="'fa-file-image-o'" [backRoutingList]="[{routingName: 'Album List', icon: 'fa-file-image-o', routerLink: '../../'}]"></app-page-header>
+
+  <div class="card bg-light mb-3" *ngIf="currentAlbum">
+    <div class="card-header">
+      <div class="row">
+        <div class="col col-xs-8 text-right">
+          <div class="upload-btn-holder">
+            <label class="btn btn-primary mb-0">
+              <!--<app-file-uploader-->
+                <!--class=""-->
+                <!--[uploadBodyParams]="currentAlbum"-->
+                <!--(onFileUploaded)="onUploadedSuccess($event)">-->
+              <!--</app-file-uploader>-->
+              Datei hochladen
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+    <!--<div class="card-body">-->
+      <!--<div class="loading text-center p-5" *ngIf="isLoading">-->
+        <!--<i class="fa fa-spin fa-spinner fa-2x"></i>-->
+      <!--</div>-->
+
+      <!--<div class="no-content text-muted text-center p-5" *ngIf="!isLoading &&  fileDtos && fileDtos.length === 0"><h5>Keine Datei vorhanden.</h5></div>-->
+
+      <!--<div class="row">-->
+        <!--<div class="col-6">-->
+          <!--<div class="form-group">-->
+            <!--<label  class="font-weight-bold">Datei suchen:</label>-->
+            <!--<input  class="form-control" [(ngModel)]="searchText" placeholder="Dateiname eingeben">-->
+          <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="col-6">-->
+          <!--<div class="btn-group pull-right" role="group" aria-label="Basic example">-->
+            <!--<button type="button" class="btn btn-light rounded-0" [ngClass]="{'active': !showAsThumb}" (click)="showAsThumb = !showAsThumb"><i class="fa fa-th-list"></i></button>-->
+            <!--<button type="button" class="btn btn-light rounded-0" [ngClass]="{'active': showAsThumb}" (click)="showAsThumb = !showAsThumb"><i class="fa fa-th-large"></i></button>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="imgs-holder" *ngIf="!isLoading && fileDtos">-->
+
+        <!--<ng-template [ngIf]="showAsThumb"   [ngIfElse]="fileListTemplate">-->
+          <!--<div class="d-inline-flex flex-column justify-content-center img-thumbnail text-truncate mr-3 mb-3 file-item"-->
+               <!--*ngFor="let file of fileDtos | deepSearchValueInArray:searchText | orderBy:'createDate':false; let i = index"-->
+               <!--(click)="toggleSelectFile(file)"-->
+               <!--[ngClass]="{'unclickable': !isFileClickAble(file), 'selected': readonly && selectedFileMap.has(file.id)}">-->
+            <!--<div class="m-auto img-wrapper">-->
+              <!--<app-file-thumb  [fileAssetDto]="file"></app-file-thumb>-->
+
+              <!--<div class="btns-holder" [hidden]="readonly">-->
+                <!--<div class="content">-->
+                  <!--<span class="btn btn-sm" (click)="deleteFile(file, i)"><i class="fa fa-trash"></i></span>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="img-name">-->
+              <!--<p class="mb-0 mt-2">-->
+                <!--{{file.rawName | slice:0:5}}-->
+                <!--<span *ngIf="file.rawName.length > 6">...</span>-->
+                <!--{{file.rawName | slice:6:10}}{{'.' + file.extension}}-->
+              <!--</p>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</ng-template>-->
+
+        <!--<ng-template #fileListTemplate>-->
+          <!--<table class="table table-striped list-view">-->
+            <!--<tbody>-->
+            <!--<tr class="file-item"-->
+                <!--*ngFor="let file of fileDtos | deepSearchValueInArray:searchText | orderBy:'createDate':false; let i = index"-->
+                <!--(click)="toggleSelectFile(file)"-->
+                <!--[ngClass]="{'unclickable': !isFileClickAble(file), 'selected': readonly && selectedFileMap.has(file.id)}">-->
+
+              <!--<td class="m-0" width="60" align="center">-->
+                <!--<div class="img-wrapper m-0">-->
+                  <!--<app-file-thumb [fileAssetDto]="file"></app-file-thumb>-->
+                <!--</div>-->
+              <!--</td>-->
+
+              <!--<td>-->
+                <!--<div class="file-name text-truncate">{{file.rawName + '.' + file.extension}}</div>-->
+              <!--</td>-->
+
+              <!--<td class="delete-btn" width="120" [hidden]="readonly">-->
+                <!--<button class="btn btn-danger btn-sm pull-right" (click)="deleteFile(file, i)">Löschen</button>-->
+              <!--</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+
+          <!--</table>-->
+        <!--</ng-template>-->
+
+      <!--</div>-->
+    <!--</div>-->
+
+
+
+
+
+  </div>
 </div>
 
