@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {routerTransition} from '../../../router.animations';
 import {Menu} from '../../../dto/menu';
+import {MenuDao} from '../../../shared/dao';
 
 @Component({
   selector: 'app-menu-overview',
@@ -13,7 +14,7 @@ export class MenuOverviewComponent implements OnInit {
   menus: Array<Menu> = [];
   selectedMenu: Menu;
 
-  constructor() { }
+  constructor(private menuDao: MenuDao) { }
 
   ngOnInit() {
     this.menus.push(<Menu> {
@@ -59,6 +60,8 @@ export class MenuOverviewComponent implements OnInit {
     });
 
     this.selectedMenu = this.menus[0];
+
+    this.menuDao.getAll().subscribe((data) => console.log(data));
   }
 
 }

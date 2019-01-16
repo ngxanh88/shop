@@ -6,6 +6,7 @@ import { MenuOverviewComponent } from './menu-overview/menu-overview.component';
 import {PageHeaderModule} from '../../shared/modules';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
 import { MenuItemEditComponent } from './menu-item-edit/menu-item-edit.component';
+import {MenuDao} from '../../shared/dao';
 
 @NgModule({
   declarations: [MenuOverviewComponent, MenuEditComponent, MenuItemEditComponent],
@@ -13,6 +14,7 @@ import { MenuItemEditComponent } from './menu-item-edit/menu-item-edit.component
     CommonModule,
     MenuRoutingModule,
     PageHeaderModule
-  ]
+  ],
+  providers: [MenuDao]
 })
 export class MenuModule { }

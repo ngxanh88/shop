@@ -55,6 +55,10 @@ public class MenuService {
 		return menuDao.endDeleteById(menuId, Menu.class);
 	}
 
+	public Menu getMenuById(long id) {
+		return menuDao.getByID(id, Menu.class);
+	}
+
 	public MenuItem createMenuItem(Long menuId, MenuItem item) {
 		final Menu menu = menuDao.getByID(menuId, Menu.class);
 
@@ -87,6 +91,10 @@ public class MenuService {
 		}
 		
 		return menuItemDao.findByShopNameAndMenuId(shopName, menuId);
+	}
+
+	public MenuItem getMenuItemById(long id) {
+		return menuItemDao.getByID(id, MenuItem.class);
 	}
 
 	public GroupOption createOrUpdateGroupOption(GroupOption groupOption) {
