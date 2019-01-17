@@ -2,6 +2,7 @@ package de.ngxa.restaurant.controller;
 
 import de.ngxa.restaurant.entity.Menu;
 import de.ngxa.restaurant.entity.MenuItem;
+import de.ngxa.restaurant.exception.BadRequestException;
 import de.ngxa.restaurant.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -34,13 +35,17 @@ public class MenuManagerController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public Menu createMenu(@Valid @RequestBody Menu menu) {
+    public Menu createMenu(@Valid @RequestBody Menu menu, @PathVariable String shopName) {
+        menu.setShopName(shopName);
         return menuService.createOrUpdateMenu(menu);
     }
 
     @RequestMapping(method = RequestMethod.PUT)
     @ResponseBody
-    public Menu updateMenu(@Valid @RequestBody Menu menu) {
+    public Menu updateMenu(@Valid @RequestBody Menu menu, @PathVariable String shopName) {
+        if(!shopName.equals(menu.getShopName())) {
+            throw new BadRequestException("can not update menu from other shop.");
+        }
         return menuService.updateCustomizedMenuInfo(menu);
     }
 
@@ -64,13 +69,17 @@ public class MenuManagerController {
 
     @RequestMapping(value = "/{menuId}/item", method = RequestMethod.POST)
     @ResponseBody
-    public MenuItem createMenuItem(@PathVariable Long menuId, @Valid @RequestBody MenuItem menuItem) {
+    public MenuItem createMenuItem(@PathVariable String shopName, @PathVariable Long menuId, @Valid @RequestBody MenuItem menuItem) {
+        menuItem.setShopName(shopName);
         return menuService.createMenuItem(menuId, menuItem);
     }
 
     @RequestMapping(value = "/{menuId}/item", method = RequestMethod.PUT)
     @ResponseBody
-    public MenuItem updateMenuItem(@Valid @RequestBody MenuItem menuItem) {
+    public MenuItem updateMenuItem(@Valid @RequestBody MenuItem menuItem, @PathVariable String shopName) {
+        if(!shopName.equals(menuItem.getShopName())) {
+            throw new BadRequestException("can not update menu item from other shop.");
+        }
         return menuService.updateMenuItem(menuItem);
     }
 

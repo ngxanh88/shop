@@ -1,6 +1,6 @@
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {IBaseDao} from './ibase-dao';
+import {IBaseDao} from '../base';
 
 export abstract class BaseDaoImpl<T> implements IBaseDao<T> {
 

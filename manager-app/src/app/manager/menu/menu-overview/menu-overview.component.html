@@ -19,7 +19,7 @@
               <p class="list-group-item-menu-desc-text">{{menu.description}}</p>
               <div class="row justify-content-end">
                 <button [ngClass]="{'btn': true, 'btn-sm': true, 'btn-success': selectedMenu && menu.id === selectedMenu.id}" [routerLink]="['edit', menu.id]" [routerLinkActive]="['router-link-active']"><i class="fa fa-pencil"></i></button>
-                <button [ngClass]="{'btn': true, 'btn-sm': true, 'btn-danger': selectedMenu && menu.id === selectedMenu.id}" ><i class="fa fa-trash"></i></button>
+                <button [ngClass]="{'btn': true, 'btn-sm': true, 'btn-danger': selectedMenu && menu.id === selectedMenu.id}" (click)="deleteMenu(menu)"><i class="fa fa-trash"></i></button>
               </div>
             </a>
           </div>
